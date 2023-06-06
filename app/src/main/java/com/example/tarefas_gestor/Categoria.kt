@@ -1,6 +1,8 @@
 package com.example.tarefas_gestor
 
 import android.content.ContentValues
+import android.database.Cursor
+import android.provider.BaseColumns
 
 data class Categoria(
     var nome: String,
@@ -15,5 +17,19 @@ data class Categoria(
         valores.put(TabelaCategorias.CAMPO_COR, cor)
 
         return valores
+    }
+
+    companion object {
+        fun fromCursor(cursor: Cursor) : Categoria {
+            val posId = cursor.getColumnIndex(BaseColumns._ID)
+            val posNome = cursor.getColumnIndex(TabelaCategorias.CAMPO_NOME)
+            val posCor = cursor.getColumnIndex(TabelaCategorias.CAMPO_COR)
+
+            val id = cursor.getLong(posId)
+            val nome = cursor.getString(posNome)
+            val cor = cursor.getString(posCor)
+
+            return Categoria(nome,cor, id)
+        }
     }
 }
