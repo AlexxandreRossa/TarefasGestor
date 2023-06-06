@@ -2,6 +2,7 @@ package com.example.tarefas_gestor
 
 import android.content.ContentProvider
 import android.content.ContentValues
+import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
 
@@ -205,5 +206,20 @@ class TarefasContentProvider : ContentProvider() {
         selectionArgs: Array<out String>?
     ): Int {
         TODO("Not yet implemented")
+    }
+
+    companion object {
+        private const val AUTORIDADE = "com.example.tarefas_gestor"
+
+        const val CATEGORIAS = "categorias"
+        const val TAREFAS = "tarefas"
+
+        private const val URI_CATEGORIAS = 100
+        private const val URI_TAREFAS = 200
+
+        fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
+            addURI(AUTORIDADE, CATEGORIAS, URI_CATEGORIAS)
+            addURI(AUTORIDADE, TAREFAS, URI_TAREFAS)
+        }
     }
 }
