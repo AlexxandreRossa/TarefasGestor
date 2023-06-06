@@ -5,15 +5,14 @@
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FirstFragment">
+    tools:context=".MenuPrincipalFragment">
 
     <Button
         android:id="@+id/button_categorias"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="180dp"
-        android:text="@string/next"
-        app:layout_constraintBottom_toTopOf="@id/textview_first"
+        android:text="@string/categorias"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
         android:text="@string/pesquisar"
-        app:layout_constraintBottom_toTopOf="@id/textview_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,7 +35,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:text="@string/tarefas"
-        app:layout_constraintBottom_toTopOf="@id/textview_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +46,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="@string/sobre"
-        app:layout_constraintBottom_toTopOf="@id/textview_first"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
