@@ -33,4 +33,14 @@ class BdInstrumentedTest {
         val bd = openHelper.readableDatabase
         assert(bd.isOpen)
     }
+    @Test
+    fun consegueInserirCategorias() {
+        val openHelper = BdTarefasOpenHelper(getAppContext())
+        val bd = openHelper.writableDatabase
+
+        val categoria = Categoria("Doméstica","Verde")
+        val id = TabelaCategorias(bd).insere(categoria.toContentValues())
+        assertNotEquals(-1, id)
+    }
+
 }
