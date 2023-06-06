@@ -66,10 +66,16 @@ class BdInstrumentedTest {
         val categoria = Categoria("Doméstica","Amarelo")
         insereCategoria(bd, categoria)
 
-        val tarefa1 = Tarefa("Levar o Lixo","Ir meter os sacos no lixo","06/20/2023",categoria.id)
+        val dataVencimento1 = Calendar.getInstance()
+        dataVencimento1.set(2023, 6, 5)
+
+        val dataVencimento2 = Calendar.getInstance()
+        dataVencimento2.set(2023, 6, 6)
+
+        val tarefa1 = Tarefa("Levar o Lixo","Ir meter os sacos no lixo",dataVencimento1,categoria.id)
         insereTarefa(bd, tarefa1)
 
-        val tarefa2 = Tarefa("Varrer o chão","Pegar na vasoura e varrer o chão","06/10/2023",categoria.id)
+        val tarefa2 = Tarefa("Varrer o chão","Pegar na vasoura e varrer o chão",dataVencimento2,categoria.id)
         insereTarefa(bd, tarefa2)
     }
 
