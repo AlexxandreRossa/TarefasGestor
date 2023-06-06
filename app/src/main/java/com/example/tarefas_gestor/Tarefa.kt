@@ -3,9 +3,9 @@ package com.example.tarefas_gestor
 import android.content.ContentValues
 data class Tarefa(
     var nome: String,
-    var descricao: Int,
+    var descricao: String,
     var data_vencimento: String,
-    var id_categoria: Int,
+    var id_categoria: Long,
     var id: Long = -1
 ) {
     fun toContentValues() : ContentValues {
