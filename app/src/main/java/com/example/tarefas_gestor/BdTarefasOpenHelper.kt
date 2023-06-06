@@ -12,7 +12,7 @@ class BdTarefasOpenHelper(
 ) : SQLiteOpenHelper(context, NOME_BASE_DADOS, null, VERSAO_BASE_DADOS) {
 
     override fun onCreate(db: SQLiteDatabase?) {
-        TODO("Not yet implemented")
+
     }
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
