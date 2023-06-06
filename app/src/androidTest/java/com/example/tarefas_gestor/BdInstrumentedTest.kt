@@ -11,6 +11,8 @@ import org.junit.runner.RunWith
 
 import org.junit.Assert.*
 import org.junit.Before
+import java.util.Calendar
+import java.util.Date
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -64,10 +66,10 @@ class BdInstrumentedTest {
         val categoria = Categoria("Doméstica","Amarelo")
         insereCategoria(bd, categoria)
 
-        val tarefa1 = Tarefa("Levar o Lixo","Ir meter os sacos no lixo","20/06/2023",categoria.id)
+        val tarefa1 = Tarefa("Levar o Lixo","Ir meter os sacos no lixo","06/20/2023",categoria.id)
         insereTarefa(bd, tarefa1)
 
-        val tarefa2 = Tarefa("Varrer o chão","Pegar na vasoura e varrer o chão","10/06/2023",categoria.id)
+        val tarefa2 = Tarefa("Varrer o chão","Pegar na vasoura e varrer o chão","06/10/2023",categoria.id)
         insereTarefa(bd, tarefa2)
     }
 
@@ -111,5 +113,50 @@ class BdInstrumentedTest {
         )
 
         assert(cursorTodasCategorias.count > 1)
+    }
+
+    @Test
+    fun consegueLerTarefas() {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("Part-time","Vermelho")
+        insereCategoria(bd, categoria)
+
+        val dataVencimento1 = Calendar.getInstance()
+        dataVencimento1.set(2023, 6, 9)
+
+        val dataVencimento2 = Calendar.getInstance()
+        dataVencimento2.set(2023, 6, 10)
+
+        val tarefa1 = Tarefa("Ir Trabalhar","Começar a trabalhar às 09h de Sábado",dataVencimento1, categoria.id)
+        insereTarefa(bd, tarefa1)
+
+        val tarefa2 = Tarefa("Ir Trabalhar","Começar a trabalhar às 10h de Domingo",dataVencimento2, categoria.id)
+        insereTarefa(bd, tarefa2)
+
+        val tabelaTarefas = TabelaTarefas(bd)
+
+        val cursor = tabelaTarefas.consulta(
+            TabelaTarefas.CAMPOS,
+            "${BaseColumns._ID}=?",
+            arrayOf(tarefa1.id.toString()),
+            null,
+            null,
+            null
+        )
+
+        assert(cursor.moveToNext())
+
+        val tarefaBD = Tarefa.fromCursor(cursor)
+
+        assertEquals(tarefa1, tarefaBD)
+
+        val cursorTodosLivros = tabelaTarefas.consulta(
+            TabelaTarefas.CAMPOS,
+            null, null, null, null,
+            TabelaTarefas.CAMPO_NOME
+        )
+
+        assert(cursorTodosLivros.count > 1)
     }
 }
