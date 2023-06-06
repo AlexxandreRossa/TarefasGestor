@@ -5,6 +5,7 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
+import android.provider.BaseColumns
 
 class TarefasContentProvider : ContentProvider() {
     private var bdOpenHelper : BdTarefasOpenHelper? = null
@@ -115,7 +116,29 @@ class TarefasContentProvider : ContentProvider() {
         selectionArgs: Array<out String>?,
         sortOrder: String?
     ): Cursor? {
-        TODO("Not yet implemented")
+        val bd = bdOpenHelper!!.readableDatabase
+
+        val endereco = uriMatcher().match(uri)
+        val tabela = when (endereco) {
+            URI_CATEGORIAS, URI_CATEGORIA_ID -> TabelaCategorias(bd)
+            URI_TAREFAS, URI_TAREFA_ID -> TabelaTarefas(bd)
+            else -> null
+        }
+
+        val id = uri.lastPathSegment
+
+        val (selecao, argsSel) = when (endereco) {
+            URI_CATEGORIA_ID, URI_TAREFA_ID -> Pair("${BaseColumns._ID}=?", arrayOf(id))
+            else -> Pair(selection, selectionArgs)
+        }
+
+        return tabela?.consulta(
+            projection as Array<String>,
+            selecao,
+            argsSel as Array<String>?,
+            null,
+            null,
+            sortOrder)
     }
 
     /**
@@ -215,11 +238,15 @@ class TarefasContentProvider : ContentProvider() {
         const val TAREFAS = "tarefas"
 
         private const val URI_CATEGORIAS = 100
+        private const val URI_CATEGORIA_ID = 101
         private const val URI_TAREFAS = 200
+        private const val URI_TAREFA_ID = 201
 
         fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE, CATEGORIAS, URI_CATEGORIAS)
+            addURI(AUTORIDADE, "$CATEGORIAS/#", URI_CATEGORIA_ID)
             addURI(AUTORIDADE, TAREFAS, URI_TAREFAS)
+            addURI(AUTORIDADE, "$TAREFAS/#", URI_TAREFA_ID)
         }
     }
 }
