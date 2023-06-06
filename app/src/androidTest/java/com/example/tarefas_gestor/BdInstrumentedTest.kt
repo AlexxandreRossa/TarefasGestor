@@ -8,6 +8,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 import org.junit.Assert.*
+import org.junit.Before
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -19,6 +20,12 @@ class BdInstrumentedTest {
 
     private fun getAppContext(): Context =
         InstrumentationRegistry.getInstrumentation().targetContext
+
+    @Before
+    fun apagaBaseDados() {
+        getAppContext().deleteDatabase(BdTarefasOpenHelper.NOME_BASE_DADOS)
+    }
+
 
     @Test
     fun consegueAbrirBaseDados() {
