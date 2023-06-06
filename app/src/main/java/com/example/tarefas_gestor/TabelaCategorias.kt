@@ -1,6 +1,7 @@
 package com.example.tarefas_gestor
 
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 class TabelaCategorias(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
     override fun cria() {
         db.execSQL("CREATE TABLE $NOME_TABELA ($CHAVE_TABELA, $CAMPO_NOME TEXT NOT NULL, $CAMPO_COR TEXT NOT NULL)")
@@ -10,5 +11,8 @@ class TabelaCategorias(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val NOME_TABELA = "categorias"
         const val CAMPO_NOME = "nome"
         const val CAMPO_COR = "cor"
+
+
+        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_COR)
     }
 }

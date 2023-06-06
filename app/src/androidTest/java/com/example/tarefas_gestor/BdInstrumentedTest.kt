@@ -2,6 +2,7 @@ package com.example.tarefas_gestor
 
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
+import android.provider.BaseColumns
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -73,5 +74,42 @@ class BdInstrumentedTest {
     private fun insereTarefa(bd: SQLiteDatabase, tarefa: Tarefa) {
         tarefa.id = TabelaTarefas(bd).insere(tarefa.toContentValues())
         assertNotEquals(-1, tarefa.id)
+    }
+
+    @Test
+    fun consegueLerCategorias() {
+        val bd = getWritableDatabase()
+
+        val categEscola = Categoria("Escola","Vermelho")
+        insereCategoria(bd, categEscola)
+
+        val categHobby = Categoria("Hoobie","Verde")
+        insereCategoria(bd, categHobby)
+
+        val tabelaCategorias = TabelaCategorias(bd)
+
+        val cursor = tabelaCategorias.consulta(
+            TabelaCategorias.CAMPOS,
+            "${BaseColumns._ID}=?",
+            arrayOf(categHobby.id.toString()),
+            null,
+            null,
+            null
+        )
+
+        assert(cursor.moveToNext())
+
+        val categBD = Categoria.fromCursor(cursor)
+
+        assertEquals(categHobby, categBD)
+
+        val cursorTodasCategorias = tabelaCategorias.consulta(
+            TabelaCategorias.CAMPOS,
+            null, null, null, null,
+            TabelaCategorias.CAMPO_NOME
+
+        )
+
+        assert(cursorTodasCategorias.count > 1)
     }
 }
