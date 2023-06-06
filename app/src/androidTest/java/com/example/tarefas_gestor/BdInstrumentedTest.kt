@@ -12,7 +12,6 @@ import org.junit.runner.RunWith
 import org.junit.Assert.*
 import org.junit.Before
 import java.util.Calendar
-import java.util.Date
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -164,5 +163,90 @@ class BdInstrumentedTest {
         )
 
         assert(cursorTodosLivros.count > 1)
+    }
+
+    @Test
+    fun consegueAlterarCategorias() {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("Tempo Livre","Verde")
+        insereCategoria(bd, categoria)
+
+        categoria.nome = "Tempo Livre"
+
+        val registosAlterados = TabelaCategorias(bd).altera(
+            categoria.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(categoria.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+    }
+
+    @Test
+    fun consegueAlterarLivros() {
+        val bd = getWritableDatabase()
+
+        val categoriaTempoLivre = Categoria("Tempo Livre","Verde")
+        insereCategoria(bd, categoriaTempoLivre)
+
+        val categoriaTempoLivre2 = Categoria("Tempo Livre","Verde")
+        insereCategoria(bd, categoriaTempoLivre2)
+
+        val novadataVencimento = Calendar.getInstance()
+        novadataVencimento.set(2023, 6, 10)
+
+        val tarefa = Tarefa("...","...",novadataVencimento, categoriaTempoLivre2.id)
+        insereTarefa(bd, tarefa)
+
+        tarefa.id_categoria = categoriaTempoLivre.id
+        tarefa.nome = "Planear férias"
+        tarefa.data_vencimento = novadataVencimento
+        tarefa.descricao = "Escolher dias de ferias"
+
+        val registosAlterados = TabelaTarefas(bd).altera(
+            tarefa.toContentValues(),
+            "${BaseColumns._ID}=?",
+            arrayOf(tarefa.id.toString())
+        )
+
+        assertEquals(1, registosAlterados)
+    }
+
+    @Test
+    fun consegueApagarCategorias() {
+        val bd = getWritableDatabase()
+
+        val categoriaTempoLivre = Categoria("Tempo Livre","Verde")
+        insereCategoria(bd, categoriaTempoLivre)
+
+
+        val registosEliminados = TabelaCategorias(bd).elimina(
+            "${BaseColumns._ID}=?",
+            arrayOf(categoriaTempoLivre.id.toString())
+        )
+
+        assertEquals(1, registosEliminados)
+    }
+
+    @Test
+    fun consegueApagarLivros() {
+        val bd = getWritableDatabase()
+
+        val categoria = Categoria("...","...")
+        insereCategoria(bd, categoria)
+
+        val novadataVencimento = Calendar.getInstance()
+        novadataVencimento.set(2023, 6, 10)
+
+        val tarefa = Tarefa("...","...",novadataVencimento, categoria.id)
+        insereTarefa(bd, tarefa)
+
+        val registosEliminados = TabelaTarefas(bd).elimina(
+            "${BaseColumns._ID}=?",
+            arrayOf(tarefa.id.toString())
+        )
+
+        assertEquals(1, registosEliminados)
     }
 }
