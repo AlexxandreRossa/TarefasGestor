@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_SobreFragment"
             app:destination="@id/SobreFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_ListaTarefasFragment"
+            app:destination="@id/ListaTarefasFragment" />
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"
@@ -23,6 +26,15 @@
 
         <action
             android:id="@+id/action_SobreFragment_to_MenuPrinciapalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ListaTarefasFragment"
+        android:name="com.example.tarefas_gestor.ListaTarefasFragment"
+        android:label="@string/lista_tarefas_label"
+        tools:layout="@layout/fragment_lista_tarefas">
+        <action
+            android:id="@+id/action_ListaTarefasFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
     </fragment>
 </navigation>
