@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.tarefas_gestor.databinding.FragmentSobreBinding
 
+
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */

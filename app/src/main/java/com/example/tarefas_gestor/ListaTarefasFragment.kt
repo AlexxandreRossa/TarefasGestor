@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tarefas_gestor.databinding.FragmentListaTarefasBinding
 
+
 private const val ID_LOADER_TAREFAS = 0
 
 
@@ -136,5 +137,35 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         override fun onLoaderReset(loader: Loader<Cursor>) {
             adapterTarefas!!.cursor = null
         }
+
+    fun processaOpcaoMenu(item: MenuItem) : Boolean {
+        return when (item.itemId) {
+            R.id.adicionar -> {
+                adicionaTarefa()
+                true
+            }
+            R.id.editar -> {
+                editarTarefa()
+                true
+            }
+            R.id.eliminar -> {
+                eliminarTarefa()
+                true
+            }
+            else -> false
+        }
+    }
+
+    private fun eliminarTarefa() {
+
+    }
+
+    private fun editarTarefa() {
+
+    }
+
+    private fun adicionaTarefa() {
+
+    }
 
 }
