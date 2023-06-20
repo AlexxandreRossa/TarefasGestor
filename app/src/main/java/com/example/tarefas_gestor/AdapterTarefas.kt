@@ -2,6 +2,7 @@ package com.example.tarefas_gestor
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import android.database.Cursor
@@ -15,7 +16,17 @@ class AdapterTarefas(val fragment: ListaTarefasFragment) : RecyclerView.Adapter<
         }
 
     inner class ViewHolderTarefa(contentor: View) : ViewHolder(contentor) {
+        private val textViewNome = contentor.findViewById<TextView>(R.id.textViewNome)
+        private val textViewCategoria = contentor.findViewById<TextView>(R.id.textViewCategoria)
+
+
+
         internal var tarefa: Tarefa? = null
+            set(value) {
+                field = value
+                textViewNome.text = tarefa?.nome ?: ""
+                textViewCategoria.text = tarefa?.id_categoria.toString() ?: ""
+            }
     }
 
     /**
