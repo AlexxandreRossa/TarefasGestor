@@ -40,6 +40,9 @@ class MenuPrincipalFragment : Fragment() {
         binding.buttonTarefas.setOnClickListener {
             findNavController().navigate(R.id.action_MenuPrincipalFragment_to_ListaTarefasFragment)
         }
+
+        val activity = activity as MainActivity
+        activity.idMenuAtual = R.menu.menu_main
     }
 
     override fun onDestroyView() {
