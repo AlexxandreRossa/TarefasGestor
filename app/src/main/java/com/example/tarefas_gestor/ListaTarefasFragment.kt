@@ -11,6 +11,8 @@ import androidx.loader.content.Loader
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tarefas_gestor.databinding.FragmentListaTarefasBinding
 
+private const val ID_LOADER_TAREFAS = 0
+
 
 class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
@@ -38,6 +40,10 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         val adapterTarefas = AdapterTarefas()
         binding.recyclerviewtarefas.adapter = adapterTarefas
         binding.recyclerviewtarefas.layoutManager = LinearLayoutManager(requireContext())
+
+
+        val loader = LoaderManager.getInstance(this)
+        loader.initLoader(ID_LOADER_TAREFAS, null, this)
     }
 
     companion object {
