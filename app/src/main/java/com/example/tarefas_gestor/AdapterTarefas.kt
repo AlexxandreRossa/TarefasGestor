@@ -4,8 +4,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import android.database.Cursor
 
 class AdapterTarefas : RecyclerView.Adapter<AdapterTarefas.ViewHolderTarefa>() {
+
+    var cursor: Cursor? = null
+        set(value) {
+            field = value
+            notifyDataSetChanged()
+        }
+
     inner class ViewHolderTarefa(itemView: View) : ViewHolder(itemView) {
 
     }
