@@ -39,6 +39,7 @@ class AdapterTarefas(val fragment: ListaTarefasFragment) : RecyclerView.Adapter<
 
         fun seleciona() {
             viewHolderSeleccionado = this
+            fragment.tarefaSelecionada = tarefa
             itemView.setBackgroundResource(R.color.item_selecionado)
         }
 

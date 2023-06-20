@@ -26,6 +26,8 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    var tarefaSelecionada : Tarefa? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
