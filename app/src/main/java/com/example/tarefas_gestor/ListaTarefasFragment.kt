@@ -131,5 +131,4 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             adapterTarefas!!.cursor = null
         }
 
-    }
 }
