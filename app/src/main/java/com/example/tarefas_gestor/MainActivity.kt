@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.example.tarefas_gestor.databinding.ActivityMainBinding
+import androidx.fragment.app.Fragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+    var fragment : Fragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         WindowCompat.setDecorFitsSystemWindows(window, false)
