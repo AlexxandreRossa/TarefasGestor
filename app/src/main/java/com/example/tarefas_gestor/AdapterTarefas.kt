@@ -14,8 +14,8 @@ class AdapterTarefas(val fragment: ListaTarefasFragment) : RecyclerView.Adapter<
             notifyDataSetChanged()
         }
 
-    inner class ViewHolderTarefa(itemView: View) : ViewHolder(itemView) {
-
+    inner class ViewHolderTarefa(contentor: View) : ViewHolder(contentor) {
+        internal var tarefa: Tarefa? = null
     }
 
     /**
@@ -78,6 +78,7 @@ class AdapterTarefas(val fragment: ListaTarefasFragment) : RecyclerView.Adapter<
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolderTarefa, position: Int) {
-        TODO("Not yet implemented")
+        cursor!!.move(position)
+        holder.tarefa = Tarefa.fromCursor(cursor!!)
     }
 }
