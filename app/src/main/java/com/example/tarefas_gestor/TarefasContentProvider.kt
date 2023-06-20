@@ -276,13 +276,19 @@ class TarefasContentProvider : ContentProvider() {
     companion object {
         private const val AUTORIDADE = "com.example.tarefas_gestor"
 
-        const val CATEGORIAS = "categorias"
-        const val TAREFAS = "tarefas"
+        private const val CATEGORIAS = "categorias"
+        private const val TAREFAS = "tarefas"
 
         private const val URI_CATEGORIAS = 100
         private const val URI_CATEGORIA_ID = 101
         private const val URI_TAREFAS = 200
         private const val URI_TAREFA_ID = 201
+
+        private val ENDERECO_BASE = Uri.parse("content://$AUTORIDADE")
+
+        val ENDERECO_CATEGORIAS = Uri.withAppendedPath(ENDERECO_BASE, CATEGORIAS)
+        val ENDERECO_TAREFAS = Uri.withAppendedPath(ENDERECO_BASE, TAREFAS)
+
 
         fun uriMatcher() = UriMatcher(UriMatcher.NO_MATCH).apply {
             addURI(AUTORIDADE, CATEGORIAS, URI_CATEGORIAS)

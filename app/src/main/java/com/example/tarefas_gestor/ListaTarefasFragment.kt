@@ -69,7 +69,13 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
          * @return Return a new Loader instance that is ready to start loading.
          */
         override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-            TODO("Not yet implemented")
+            return CursorLoader(
+                requireContext(),
+                TarefasContentProvider.ENDERECO_TAREFAS,
+                TabelaTarefas.CAMPOS,
+                null, null,
+                TabelaTarefas.CAMPO_NOME
+            )
         }
 
         /**
