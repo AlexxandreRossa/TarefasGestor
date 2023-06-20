@@ -19,4 +19,7 @@
     <string name="lista_tarefas_label">Tarefas</string>
     <string name="textviewNome">TextView</string>
     <string name="textviewCategoria">TextView</string>
+    <string name="adicionar">Adicionar</string>
+    <string name="editar">Editar</string>
+    <string name="eliminar">Eliminar</string>
 </resources>
