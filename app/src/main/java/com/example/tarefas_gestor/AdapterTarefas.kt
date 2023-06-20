@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import android.database.Cursor
 
-class AdapterTarefas : RecyclerView.Adapter<AdapterTarefas.ViewHolderTarefa>() {
+class AdapterTarefas(val fragment: ListaTarefasFragment) : RecyclerView.Adapter<AdapterTarefas.ViewHolderTarefa>() {
 
     var cursor: Cursor? = null
         set(value) {
@@ -42,7 +42,9 @@ class AdapterTarefas : RecyclerView.Adapter<AdapterTarefas.ViewHolderTarefa>() {
      * @see .onBindViewHolder
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderTarefa {
-        TODO("Not yet implemented")
+        return ViewHolderTarefa(
+            fragment.layoutInflater.inflate(R.layout.item_tarefa, parent, false)
+        )
     }
 
     /**
