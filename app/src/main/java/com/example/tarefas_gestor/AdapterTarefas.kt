@@ -89,7 +89,7 @@ class AdapterTarefas(val fragment: ListaTarefasFragment) : RecyclerView.Adapter<
      * @param position The position of the item within the adapter's data set.
      */
     override fun onBindViewHolder(holder: ViewHolderTarefa, position: Int) {
-        cursor!!.move(position)
+        cursor!!.moveToPosition(position)
         holder.tarefa = Tarefa.fromCursor(cursor!!)
     }
 }
