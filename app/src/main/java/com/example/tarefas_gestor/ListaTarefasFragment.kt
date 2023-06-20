@@ -28,6 +28,15 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private val binding get() = _binding!!
 
     var tarefaSelecionada : Tarefa? = null
+        set(value) {
+            field = value
+
+            val mostrarEliminarAlterar = (value != null)
+
+            val activity = activity as MainActivity
+            activity.mostraOpcaoMenu(R.id.editar, mostrarEliminarAlterar)
+            activity.mostraOpcaoMenu(R.id.eliminar, mostrarEliminarAlterar)
+        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
