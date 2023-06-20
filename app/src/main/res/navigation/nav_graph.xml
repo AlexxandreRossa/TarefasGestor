@@ -36,5 +36,17 @@
         <action
             android:id="@+id/action_ListaTarefasFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_ListaLivrosFragment_to_novoLivroFragment"
+            app:destination="@id/novoLivroFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/novoLivroFragment"
+        android:name="com.example.tarefas_gestor.NovaTarefaFragment"
+        android:label="@string/nova_tarefa_label"
+        tools:layout="@layout/fragment_nova_tarefa">
+        <action
+            android:id="@+id/action_NovaTarefaFragment_to_ListaTarefasFragment"
+            app:destination="@id/ListaTarefasFragment" />
     </fragment>
 </navigation>
