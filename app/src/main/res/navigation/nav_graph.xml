@@ -37,7 +37,7 @@
             android:id="@+id/action_ListaTarefasFragment_to_MenuPrincipalFragment"
             app:destination="@id/MenuPrincipalFragment" />
         <action
-            android:id="@+id/action_ListaTarefasFragment_to_novaTarefaFragment"
+            android:id="@+id/action_ListaTarefasFragment_to_editarTarefaFragment"
             app:destination="@id/EditarTarefaFragment" />
         <action
             android:id="@+id/action_ListaTarefasFragment_to_eliminarTarefaFragment"
@@ -49,7 +49,7 @@
         android:label="@string/editar_tarefa_label"
         tools:layout="@layout/fragment_editar_tarefa">
         <action
-            android:id="@+id/action_NovaTarefaFragment_to_ListaTarefasFragment"
+            android:id="@+id/action_EditarTarefaFragment_to_ListaTarefasFragment"
             app:destination="@id/ListaTarefasFragment" />
     </fragment>
     <fragment

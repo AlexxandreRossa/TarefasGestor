@@ -6,6 +6,7 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import android.text.format.DateFormat
 import android.widget.SimpleCursorAdapter
 import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
@@ -19,6 +20,7 @@ import java.util.Date
 private const val ID_LOADER_CATEGORIAS = 0
 
 class EditarTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+    private var tarefa: Tarefa?= null
     private var _binding: FragmentEditarTarefaBinding? = null
 
     // This property is only valid between onCreateView and
@@ -45,6 +47,21 @@ class EditarTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_guardar_cancelar
+
+
+        val tarefa = EditarTarefaFragmentArgs.fromBundle(requireArguments()).livro
+
+        if (tarefa != null) {
+            binding.editTextTitulo.setText(tarefa.nome)
+            binding.editTextIsbn.setText(tarefa.descricao)
+            if (tarefa.dataVencimento != null) {
+                binding.editTextDataPub.setText(
+                    DateFormat.format("yyyy-MM-dd", tarefa.dataVencimento)
+                )
+            }
+        }
+
+        this.livro = livro
     }
 
     override fun onDestroyView() {
@@ -207,5 +224,21 @@ class EditarTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             intArrayOf(android.R.id.text1),
             0
         )
+
+        mostraCategoriaSelecionadaSpinner()
+    }
+
+    private fun mostraCategoriaSelecionadaSpinner() {
+        if (tarefa == null) return
+
+        val idCategoria = tarefa!!.id_categoria
+
+        val ultimaCategoria = binding.spinnerCategorias.count - 1
+        for (i in 0..ultimaCategoria) {
+            if (idCategoria == binding.spinnerCategorias.getItemIdAtPosition(i)) {
+                binding.spinnerCategorias.setSelection(i)
+                return
+            }
+        }
     }
 }
