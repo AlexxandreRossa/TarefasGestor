@@ -28,8 +28,9 @@
         android:id="@+id/spinnerCategorias"
         android:layout_width="410dp"
         android:layout_height="58dp"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="118dp" />
+        android:layout_marginTop="118dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="409dp"

@@ -174,6 +174,7 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     }
 
     private fun adicionaTarefa() {
+        findNavController().navigate(R.id.action_ListaTarefasFragment_to_novaTarefaFragment)
 
     }
 
