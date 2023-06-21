@@ -1,12 +1,15 @@
 package com.example.tarefas_gestor
 
 import android.os.Bundle
+import android.net.Uri
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.text.format.DateFormat
 import android.view.View
+import android.widget.Toast
 import android.view.ViewGroup
+import com.google.android.material.snackbar.Snackbar
 import androidx.navigation.fragment.findNavController
 import com.example.tarefas_gestor.databinding.FragmentEliminarTarefaBinding
 
@@ -70,5 +73,15 @@ class EliminarTarefaFragment : Fragment() {
     }
 
     private fun eliminar() {
+
+        val enderecoTarefa = Uri.withAppendedPath(TarefasContentProvider.ENDERECO_TAREFAS, tarefa.id.toString())
+        val numTarefasEliminadas = requireActivity().contentResolver.delete(enderecoTarefa, null, null)
+
+        if (numTarefasEliminadas == 1) {
+            Toast.makeText(requireContext(), getString(R.string.tarefa_eliminada_com_sucesso), Toast.LENGTH_LONG).show()
+            voltaListaLivros()
+        } else {
+            Snackbar.make(binding.textViewName, getString(R.string.erro_eliminar_tarefa), Snackbar.LENGTH_INDEFINITE)
+        }
     }
 }

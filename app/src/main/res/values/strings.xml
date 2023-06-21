@@ -38,4 +38,6 @@
     <string name="_2023_06_22">2023-06-22</string>
     <string name="categoria">Categoria</string>
     <string name="dom_stica">Doméstica</string>
+    <string name="tarefa_eliminada_com_sucesso">Tarefa eliminada com sucesso</string>
+    <string name="erro_eliminar_tarefa">Erro ao eliminar tarefa</string>
 </resources>
