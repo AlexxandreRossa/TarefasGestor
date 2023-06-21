@@ -30,4 +30,12 @@
     <string name="data_invalida">Data inválida</string>
     <string name="tarefa_guardada_com_sucesso">Tarefa guardada com sucesso</string>
     <string name="erro_guardar_tarefa">Não foi possível guardar a tarefa</string>
+    <string name="nome">Nome</string>
+    <string name="levar_o_lixo">Levar o Lixo</string>
+    <string name="descri_o">Descrição</string>
+    <string name="pegar_no_lico_da_cozinha_e_levar_ao_contentor">Pegar no lico da cozinha e levar ao contentor</string>
+    <string name="data_de_vencimento">Data de Vencimento</string>
+    <string name="_2023_06_22">2023-06-22</string>
+    <string name="categoria">Categoria</string>
+    <string name="dom_stica">Doméstica</string>
 </resources>

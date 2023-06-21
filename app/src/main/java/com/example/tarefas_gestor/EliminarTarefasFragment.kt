@@ -41,11 +41,11 @@ class EliminarTarefaFragment : Fragment() {
 
     fun processaOpcaoMenu(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.action_eliminar -> {
+            R.id.eliminar -> {
                 eliminar()
                 true
             }
-            R.id.action_cancelar -> {
+            R.id.cancelar -> {
                 voltaListaLivros()
                 true
             }
