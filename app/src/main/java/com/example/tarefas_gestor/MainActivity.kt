@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
 
         val opcaoProcessada = when (fragment) {
             is ListaTarefasFragment -> (fragment as ListaTarefasFragment).processaOpcaoMenu(item)
-            is NovaTarefaFragment -> (fragment as NovaTarefaFragment).processaOpcaoMenu(item)
+            is EditarTarefaFragment -> (fragment as EditarTarefaFragment).processaOpcaoMenu(item)
             is EliminarTarefaFragment -> (fragment as EliminarTarefaFragment).processaOpcaoMenu(item)
             else -> false
         }

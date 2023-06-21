@@ -38,16 +38,16 @@
             app:destination="@id/MenuPrincipalFragment" />
         <action
             android:id="@+id/action_ListaTarefasFragment_to_novaTarefaFragment"
-            app:destination="@id/novaTarefaFragment" />
+            app:destination="@id/EditarTarefaFragment" />
         <action
             android:id="@+id/action_ListaTarefasFragment_to_eliminarTarefaFragment"
             app:destination="@id/eliminarTarefaFragment" />
     </fragment>
     <fragment
-        android:id="@+id/novaTarefaFragment"
-        android:name="com.example.tarefas_gestor.NovaTarefaFragment"
-        android:label="@string/nova_tarefa_label"
-        tools:layout="@layout/fragment_nova_tarefa">
+        android:id="@+id/EditarTarefaFragment"
+        android:name="com.example.tarefas_gestor.EditarTarefaFragment"
+        android:label="@string/editar_tarefa_label"
+        tools:layout="@layout/fragment_editar_tarefa">
         <action
             android:id="@+id/action_NovaTarefaFragment_to_ListaTarefasFragment"
             app:destination="@id/ListaTarefasFragment" />

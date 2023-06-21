@@ -12,15 +12,14 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
-import com.example.tarefas_gestor.databinding.FragmentNovaTarefaBinding
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
 private const val ID_LOADER_CATEGORIAS = 0
 
-class NovaTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
-    private var _binding: FragmentNovaTarefaBinding? = null
+class EditarTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
+    private var _binding: FragmentEditarTarefaBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -31,7 +30,7 @@ class NovaTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentNovaTarefaBinding.inflate(inflater, container, false)
+        _binding = FragmentEditarTarefaBinding.inflate(inflater, container, false)
         return binding.root
 
     }
