@@ -45,7 +45,7 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentListaTarefasBinding.inflate(inflater, container, false)
         return binding.root
@@ -107,8 +107,8 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
          * them to you through new calls here.  You should not monitor the
          * data yourself.  For example, if the data is a [android.database.Cursor]
          * and you place it in a [android.widget.CursorAdapter], use
-         * the [android.widget.CursorAdapter.CursorAdapter] constructor *without* passing
          * in either [android.widget.CursorAdapter.FLAG_AUTO_REQUERY]
+         * the [android.widget.CursorAdapter] constructor *without* passing
          * or [android.widget.CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER]
          * (that is, use 0 for the flags argument).  This prevents the CursorAdapter
          * from doing its own observing of the Cursor, which is not needed since
@@ -144,7 +144,9 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
          * @param loader The Loader that is being reset.
          */
         override fun onLoaderReset(loader: Loader<Cursor>) {
-            adapterTarefas!!.cursor = null
+            if (adapterTarefas != null) {
+                adapterTarefas!!.cursor = null
+            }
         }
 
     fun processaOpcaoMenu(item: MenuItem) : Boolean {
