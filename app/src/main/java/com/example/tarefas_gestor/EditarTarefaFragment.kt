@@ -6,23 +6,21 @@ import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import android.text.format.DateFormat
 import android.widget.SimpleCursorAdapter
 import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
-import java.text.SimpleDateFormat
 import android.net.Uri
 import java.util.Calendar
-import java.util.Date
 
 private const val ID_LOADER_CATEGORIAS = 0
 
 class EditarTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     private var tarefa: Tarefa?= null
     private var _binding: FragmentEditarTarefaBinding? = null
+    private var dataVencimento : Calendar? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -41,6 +39,12 @@ class EditarTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.calendarViewDataPub.setOnDateChangeListener { calendarView, year, month, dayOfMonth ->
+            if (dataVencimento == null) dataVencimento = Calendar.getInstance()
+            dataVencimento!!.set(year, month, dayOfMonth)
+        }
+
+
         val loader = LoaderManager.getInstance(this)
         loader.initLoader(ID_LOADER_CATEGORIAS, null, this)
 
@@ -58,9 +62,8 @@ class EditarTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
             binding.editTextNome.setText(tarefa.nome)
             binding.editTextDescricao.setText(tarefa.descricao)
             if (tarefa.dataVencimento != null) {
-                binding.editTextDataVencimento.setText(
-                    DateFormat.format("yyyy-MM-dd", tarefa.dataVencimento)
-                )
+                dataVencimento = tarefa.dataVencimento
+                binding.calendarViewDataVencimento.date = dataVencimento!!.timeInMillis
             }
         } else {
             activity.atualizaNome(R.string.nova_tarefa_label)
@@ -101,19 +104,6 @@ class EditarTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         }
 
         val categoriaId = binding.spinnerCategorias.selectedItemId
-
-        val data: Date?
-        val df = SimpleDateFormat("dd-MM-yyyy")
-        try {
-            data = df.parse(binding.editTextDataVenc.text.toString())
-        } catch (e: Exception) {
-            binding.editTextDataVenc.error = getString(R.string.data_invalida)
-            binding.editTextDataVenc.requestFocus()
-            return
-        }
-
-        val calendario = Calendar.getInstance()
-        calendario.time = data
 
         /*
          var nome: String,
