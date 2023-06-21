@@ -167,6 +167,9 @@ class ListaTarefasFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
 
     private fun eliminarTarefa() {
 
+        val acao = ListaTarefasFragmentDirections.actionListaTarefasFragmentToEliminarTarefaFragment(tarefaSelecionada!!)
+        findNavController().navigate(acao)
+
     }
 
     private fun editarTarefa() {

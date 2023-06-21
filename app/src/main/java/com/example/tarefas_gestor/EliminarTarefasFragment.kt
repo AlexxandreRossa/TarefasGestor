@@ -4,12 +4,14 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MenuItem
+import android.text.format.DateFormat
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.tarefas_gestor.databinding.FragmentEliminarTarefaBinding
 
 class EliminarTarefaFragment : Fragment() {
+    private lateinit var tarefa: Tarefa
     private var _binding: FragmentEliminarTarefaBinding? = null
 
     // This property is only valid between onCreateView and
@@ -32,6 +34,16 @@ class EliminarTarefaFragment : Fragment() {
         val activity = activity as MainActivity
         activity.fragment = this
         activity.idMenuAtual = R.menu.menu_eliminar
+
+
+        tarefa = EliminarTarefaFragmentArgs.fromBundle(requireArguments()).tarefa
+
+        binding.textViewName.text = tarefa.nome
+        binding.textViewDescricao.text = tarefa.descricao
+        if (tarefa.data_vencimento != null) {
+            binding.textViewDataVencimento.text = DateFormat.format("yyyy-MM-dd", tarefa.data_vencimento)
+        }
+        binding.textViewCategoria.text = tarefa.id_categoria
     }
 
     override fun onDestroyView() {
