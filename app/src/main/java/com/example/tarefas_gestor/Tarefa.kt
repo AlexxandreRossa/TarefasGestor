@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.database.Cursor
 import android.media.audiofx.AudioEffect.Descriptor
 import android.provider.BaseColumns
+import java.io.Serializable
 import java.util.Calendar
 data class Tarefa(
     var nome: String,
@@ -11,7 +12,7 @@ data class Tarefa(
     var data_vencimento: Calendar? = null,
     var id_categoria: Long,
     var id: Long = -1
-) {
+) : Serializable {
     fun toContentValues() : ContentValues {
         val valores = ContentValues()
 

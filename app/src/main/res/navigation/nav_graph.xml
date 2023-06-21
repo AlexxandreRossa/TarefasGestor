@@ -60,5 +60,8 @@
         <action
             android:id="@+id/action_eliminarLivroFragment_to_ListaLivrosFragment"
             app:destination="@id/ListaTarefasFragment" />
+        <argument
+            android:name="tarefa"
+            app:argType="com.example.tarefas_gestor.Tarefa" />
     </fragment>
 </navigation>
