@@ -24,4 +24,6 @@
     <string name="eliminar">Eliminar</string>
     <string name="nova_tarefa_label">Nova tarefa</string>
     <string name="data_vencimento">data_vencimento</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
 </resources>
