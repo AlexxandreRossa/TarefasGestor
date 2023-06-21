@@ -26,4 +26,8 @@
     <string name="data_vencimento">data_vencimento</string>
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>
+    <string name="nome_obrigatorio">Deve preencher o nome</string>
+    <string name="data_invalida">Data inválida</string>
+    <string name="tarefa_guardada_com_sucesso">Tarefa guardada com sucesso</string>
+    <string name="erro_guardar_tarefa">Não foi possível guardar a tarefa</string>
 </resources>

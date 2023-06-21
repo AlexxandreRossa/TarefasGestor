@@ -5,6 +5,7 @@ import android.view.MenuItem
 import android.database.Cursor
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import android.widget.SimpleCursorAdapter
 import androidx.fragment.app.Fragment
 import androidx.loader.app.LoaderManager
@@ -12,6 +13,9 @@ import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.navigation.fragment.findNavController
 import com.example.tarefas_gestor.databinding.FragmentNovaTarefaBinding
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Date
 
 private const val ID_LOADER_CATEGORIAS = 0
 
@@ -56,18 +60,70 @@ class NovaTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
                 true
             }
             R.id.cancelar -> {
-                cancelar()
+                voltaListaTarefas()
                 true
             }
             else -> false
         }
     }
 
-    private fun cancelar() {
+    private fun voltaListaTarefas() {
         findNavController().navigate(R.id.action_NovaTarefaFragment_to_ListaTarefasFragment)
     }
 
     private fun guardar() {
+
+        val nome = binding.textview.text.toString()
+        if (nome.isBlank()) {
+            binding.textview.error = getString(R.string.nome_obrigatorio)
+            binding.textview.requestFocus()
+            return
+        }
+
+        val categoriaId = binding.spinnerCategorias.selectedItemId
+
+        val data: Date
+        val df = SimpleDateFormat("dd-MM-yyyy")
+        try {
+            data = df.parse(binding.editTextDataVenc.text.toString())
+        } catch (e: Exception) {
+            binding.editTextDataVenc.error = getString(R.string.data_invalida)
+            binding.editTextDataVenc.requestFocus()
+            return
+        }
+
+        val calendario = Calendar.getInstance()
+        calendario.time = data
+
+        /*
+         var nome: String,
+    var descricao: String,
+    var data_vencimento: Calendar? = null,
+    var id_categoria: Long,
+    var id: Long = -1
+         */
+
+        val dataVencimento3 = Calendar.getInstance()
+        dataVencimento3.set(2023, 6, 10)
+
+        val tarefa = Tarefa(
+            nome,
+            ("Fazer os TPC's"),
+            dataVencimento3,
+            categoriaId)
+
+        val id = requireActivity().contentResolver.insert(
+            TarefasContentProvider.ENDERECO_TAREFAS,
+            tarefa.toContentValues()
+        )
+
+        if (id == null) {
+            binding.textview.error = getString(R.string.erro_guardar_tarefa)
+            return
+        }
+
+        Toast.makeText(requireContext(), getString(R.string.tarefa_guardada_com_sucesso), Toast.LENGTH_SHORT).show()
+        voltaListaTarefas()
 
     }
 
