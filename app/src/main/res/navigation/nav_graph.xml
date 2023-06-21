@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_ListaTarefasFragment_to_novaTarefaFragment"
             app:destination="@id/novaTarefaFragment" />
+        <action
+            android:id="@+id/action_ListaTarefasFragment_to_eliminarTarefaFragment"
+            app:destination="@id/eliminarTarefaFragment" />
     </fragment>
     <fragment
         android:id="@+id/novaTarefaFragment"
@@ -47,6 +50,15 @@
         tools:layout="@layout/fragment_nova_tarefa">
         <action
             android:id="@+id/action_NovaTarefaFragment_to_ListaTarefasFragment"
+            app:destination="@id/ListaTarefasFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/eliminarTarefaFragment"
+        android:name="com.example.tarefas_gestor.EliminarTarefaFragment"
+        android:label="@string/eliminar"
+        tools:layout="@layout/fragment_eliminar_tarefa">
+        <action
+            android:id="@+id/action_eliminarLivroFragment_to_ListaLivrosFragment"
             app:destination="@id/ListaTarefasFragment" />
     </fragment>
 </navigation>
