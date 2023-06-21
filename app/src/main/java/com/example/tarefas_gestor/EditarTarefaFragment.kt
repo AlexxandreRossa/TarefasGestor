@@ -53,14 +53,17 @@ class EditarTarefaFragment : Fragment(), LoaderManager.LoaderCallbacks<Cursor> {
         val tarefa = EditarTarefaFragmentArgs.fromBundle(requireArguments()).livro
 
         if (tarefa != null) {
-            binding.editTextTitulo.setText(tarefa.nome)
-            binding.editTextIsbn.setText(tarefa.descricao)
+            activity.atualizaNome(R.string.editar_tarefa_label)
+
+            binding.editTextNome.setText(tarefa.nome)
+            binding.editTextDescricao.setText(tarefa.descricao)
             if (tarefa.dataVencimento != null) {
-                binding.editTextDataPub.setText(
+                binding.editTextDataVencimento.setText(
                     DateFormat.format("yyyy-MM-dd", tarefa.dataVencimento)
                 )
             }
-        }
+        } else {
+            activity.atualizaNome(R.string.nova_tarefa_label)
 
         this.tarefa = tarefa
     }

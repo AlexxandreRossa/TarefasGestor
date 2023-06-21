@@ -3,7 +3,7 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="menu_principal_labe">Menu principal</string>
-    <string name="sobre_fragment_label">Sobre ...</string>
+    <string name="sobre_fragment_label">Sobre …</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
