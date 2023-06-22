@@ -33,7 +33,7 @@ class AdapterTarefas(val fragment: ListaTarefasFragment) : RecyclerView.Adapter<
             set(value) {
                 field = value
                 textViewNome.text = tarefa?.nome ?: ""
-                textViewCategoria.text = tarefa?.id_categoria.toString() ?: ""
+                textViewCategoria.text = tarefa?.categoria.toString() ?: ""
             }
 
 

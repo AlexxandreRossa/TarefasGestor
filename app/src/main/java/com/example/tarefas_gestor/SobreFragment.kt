@@ -34,7 +34,7 @@ class SobreFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.buttonSecond.setOnClickListener {
-            findNavController().navigate(R.id.action_SobreFragment_to_MenuPrinciapalFragment)
+            findNavController().navigate(R.id.action_SobreFragment_to_MenuPrincipalFragment)
         }
 
         val activity = activity as MainActivity

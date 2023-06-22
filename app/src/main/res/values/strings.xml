@@ -40,4 +40,6 @@
     <string name="dom_stica">Doméstica</string>
     <string name="tarefa_eliminada_com_sucesso">Tarefa eliminada com sucesso</string>
     <string name="erro_eliminar_tarefa">Erro ao eliminar tarefa</string>
+    <string name="alexandre_rocha_n_1704920_engenharia_inform_tica">Alexandre Rocha, nº1704920,, Engenharia Informática</string>
+    <string name="nova_tarefa_label">Nova Tarefa</string>
 </resources>

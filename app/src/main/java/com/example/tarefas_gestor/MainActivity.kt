@@ -1,7 +1,6 @@
 package com.example.tarefas_gestor
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.navigation.findNavController
@@ -69,16 +68,18 @@ class MainActivity : AppCompatActivity() {
         }
 
         return if (opcaoProcessada) { true } else { super.onOptionsItemSelected(item) }
-        }
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_main)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
 
-    fun mostraOpcaoMenu(idOpcao: Int, mostrar: Boolean) {
-         menu.findItem(idOpcao).setVisible(mostrar)
+override fun onSupportNavigateUp(): Boolean {
+    val navController = findNavController(R.id.nav_host_fragment_content_main)
+    return navController.navigateUp(appBarConfiguration)
+            || super.onSupportNavigateUp()
 }
-    fun atualizaNome(label: Int) = binding.toolbar.setTitle(label)
+
+fun mostraOpcaoMenu(idOpcao: Int, mostrar: Boolean) {
+    menu.findItem(idOpcao).setVisible(mostrar)
+}
+fun atualizaNome(label: Int) = binding.toolbar.setTitle(label)
+
+}

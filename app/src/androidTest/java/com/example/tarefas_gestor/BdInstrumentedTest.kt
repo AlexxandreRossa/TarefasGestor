@@ -72,10 +72,10 @@ class BdInstrumentedTest {
         val dataVencimento2 = Calendar.getInstance()
         dataVencimento2.set(2023, 6, 6)
 
-        val tarefa1 = Tarefa("Levar o Lixo","Ir meter os sacos no lixo",dataVencimento1,categoria.id)
+        val tarefa1 = Tarefa("Levar o Lixo","Ir meter os sacos no lixo",dataVencimento1,categoria)
         insereTarefa(bd, tarefa1)
 
-        val tarefa2 = Tarefa("Varrer o chão","Pegar na vasoura e varrer o chão",dataVencimento2,categoria.id)
+        val tarefa2 = Tarefa("Varrer o chão","Pegar na vasoura e varrer o chão",dataVencimento2,categoria)
         insereTarefa(bd, tarefa2)
     }
 
@@ -134,10 +134,10 @@ class BdInstrumentedTest {
         val dataVencimento2 = Calendar.getInstance()
         dataVencimento2.set(2023, 6, 10)
 
-        val tarefa1 = Tarefa("Ir Trabalhar","Começar a trabalhar às 09h de Sábado",dataVencimento1, categoria.id)
+        val tarefa1 = Tarefa("Ir Trabalhar","Começar a trabalhar às 09h de Sábado",dataVencimento1, categoria)
         insereTarefa(bd, tarefa1)
 
-        val tarefa2 = Tarefa("Ir Trabalhar","Começar a trabalhar às 10h de Domingo",dataVencimento2, categoria.id)
+        val tarefa2 = Tarefa("Ir Trabalhar","Começar a trabalhar às 10h de Domingo",dataVencimento2, categoria)
         insereTarefa(bd, tarefa2)
 
         val tabelaTarefas = TabelaTarefas(bd)
@@ -197,10 +197,10 @@ class BdInstrumentedTest {
         val novadataVencimento = Calendar.getInstance()
         novadataVencimento.set(2023, 6, 10)
 
-        val tarefa = Tarefa("...","...",novadataVencimento, categoriaTempoLivre2.id)
+        val tarefa = Tarefa("...","...",novadataVencimento, categoriaTempoLivre2)
         insereTarefa(bd, tarefa)
 
-        tarefa.id_categoria = categoriaTempoLivre.id
+        tarefa.categoria.id = categoriaTempoLivre.id
         tarefa.nome = "Planear férias"
         tarefa.data_vencimento = novadataVencimento
         tarefa.descricao = "Escolher dias de ferias"
@@ -240,7 +240,7 @@ class BdInstrumentedTest {
         val novadataVencimento = Calendar.getInstance()
         novadataVencimento.set(2023, 6, 10)
 
-        val tarefa = Tarefa("...","...",novadataVencimento, categoria.id)
+        val tarefa = Tarefa("...","...",novadataVencimento, categoria)
         insereTarefa(bd, tarefa)
 
         val registosEliminados = TabelaTarefas(bd).elimina(

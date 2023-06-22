@@ -44,33 +44,37 @@ class EliminarTarefaFragment : Fragment() {
         binding.textViewName.text = tarefa.nome
         binding.textViewDescricao.text = tarefa.descricao
         if (tarefa.data_vencimento != null) {
-            binding.textViewDataVencimento.text = DateFormat.format("yyyy-MM-dd", tarefa.data_vencimento)
+            binding.textViewDataVencimento.text =
+                DateFormat.format("yyyy-MM-dd", tarefa.data_vencimento)
         }
-        binding.textViewCategoria.text = tarefa.id_categoria
+        binding.textViewCategoria.text = tarefa.categoria.nome
+
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    fun processaOpcaoMenu(item: MenuItem): Boolean {
+        private fun voltaListaTarefas() {
+            findNavController().navigate(R.id.action_eliminarTarefaFragment_to_ListaTarefasFragment)
+        }
+
+        fun processaOpcaoMenu(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.eliminar -> {
                 eliminar()
                 true
             }
             R.id.cancelar -> {
-                voltaListaLivros()
+                voltaListaTarefas()
                 true
             }
             else -> false
         }
     }
 
-    private fun voltaListaLivros() {
-        findNavController().navigate(R.id.action_eliminarLivroFragment_to_ListaLivrosFragment)
-    }
 
     private fun eliminar() {
 
@@ -79,9 +83,10 @@ class EliminarTarefaFragment : Fragment() {
 
         if (numTarefasEliminadas == 1) {
             Toast.makeText(requireContext(), getString(R.string.tarefa_eliminada_com_sucesso), Toast.LENGTH_LONG).show()
-            voltaListaLivros()
+            voltaListaTarefas()
         } else {
             Snackbar.make(binding.textViewName, getString(R.string.erro_eliminar_tarefa), Snackbar.LENGTH_INDEFINITE)
         }
     }
 }
+
