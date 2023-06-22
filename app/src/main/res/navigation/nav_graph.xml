@@ -51,6 +51,11 @@
         <action
             android:id="@+id/action_EditarTarefaFragment_to_ListaTarefasFragment"
             app:destination="@id/ListaTarefasFragment" />
+        <argument
+            android:name="tarefa"
+            app:argType="com.example.tarefas_gestor.Tarefa"
+            app:nullable="true"/>
+
     </fragment>
     <fragment
         android:id="@+id/eliminarTarefaFragment"

@@ -10,7 +10,7 @@ data class Tarefa(
     var nome: String,
     var descricao: String,
     var data_vencimento: Calendar? = null,
-    var id_categoria: Long,
+    var categoria: Categoria,
     var id: Long = -1
 ) : Serializable {
     fun toContentValues() : ContentValues {
@@ -19,7 +19,7 @@ data class Tarefa(
         valores.put(TabelaTarefas.CAMPO_NOME, nome)
         valores.put(TabelaTarefas.CAMPO_DESCRICAO, descricao)
         valores.put(TabelaTarefas.CAMPO_DATA_VENCIMENTO, data_vencimento?.timeInMillis)
-        valores.put(TabelaTarefas.CAMPO_FK_CATEGORIA, id_categoria)
+        valores.put(TabelaTarefas.CAMPO_FK_CATEGORIA, categoria.id)
 
         return valores
     }
@@ -31,10 +31,14 @@ data class Tarefa(
             val posDescricao = cursor.getColumnIndex(TabelaTarefas.CAMPO_DESCRICAO)
             val posDataVencimento = cursor.getColumnIndex(TabelaTarefas.CAMPO_DATA_VENCIMENTO)
             val posCategoriaFK = cursor.getColumnIndex(TabelaTarefas.CAMPO_FK_CATEGORIA)
+            val posCategoriaNome = cursor.getColumnIndex(TabelaTarefas.CAMPO_NOME_CATEGORIA)
+            val posCategoriaCor = cursor.getColumnIndex(TabelaTarefas.CAMPO_COR_CATEGORIA)
 
             val id = cursor.getLong(posId)
             val nome = cursor.getString(posNome)
             val descricao = cursor.getString(posDescricao)
+            val nome_categoria = cursor.getString(posCategoriaNome)
+            val cor_categoria = cursor.getString(posCategoriaCor)
 
             var dataVencimento: Calendar?
 
@@ -47,7 +51,7 @@ data class Tarefa(
 
             val categoriaId = cursor.getLong(posCategoriaFK)
 
-            return Tarefa(nome,descricao,dataVencimento,categoriaId,id)
+            return Tarefa(nome,descricao,dataVencimento,Categoria(nome_categoria,cor_categoria,categoriaId),id)
         }
     }
 }

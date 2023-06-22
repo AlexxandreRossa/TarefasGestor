@@ -15,7 +15,12 @@ class TabelaTarefas(db: SQLiteDatabase) : TabelaBD(db, NOME_TABELA) {
         const val CAMPO_DESCRICAO = "descricao"
         const val CAMPO_DATA_VENCIMENTO = "data_vencimento"
         const val CAMPO_FK_CATEGORIA = "id_categoria"
+        const val CAMPO_NOME_CATEGORIA = "nome_categoria"
+        const val CAMPO_COR_CATEGORIA = "cor_categoria"
 
-        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_DESCRICAO, CAMPO_DATA_VENCIMENTO, CAMPO_FK_CATEGORIA)
+
+        val CAMPOS = arrayOf(BaseColumns._ID, CAMPO_NOME, CAMPO_DESCRICAO, CAMPO_DATA_VENCIMENTO, CAMPO_FK_CATEGORIA,
+            CAMPO_NOME_CATEGORIA,
+            CAMPO_COR_CATEGORIA)
     }
 }
