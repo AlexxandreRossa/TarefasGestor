@@ -11,12 +11,14 @@
         android:label="@string/menu_principal_label"
         tools:layout="@layout/fragment_menu_principal">
 
-        <action
-            android:id="@+id/action_MenuPrincipalFragment_to_SobreFragment"
-            app:destination="@id/SobreFragment" />
+
         <action
             android:id="@+id/action_MenuPrincipalFragment_to_ListaTarefasFragment"
             app:destination="@id/ListaTarefasFragment" />
+        <action
+            android:id="@+id/action_MenuPrincipalFragment_to_SobreFragment"
+            app:destination="@id/SobreFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/SobreFragment"

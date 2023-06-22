@@ -4,15 +4,18 @@
 
     <item
         android:id="@+id/adicionar"
+        android:icon="@android:drawable/ic_input_add"
         android:title="@string/adicionar"
         app:showAsAction="ifRoom"/>
     <item
         android:id="@+id/editar"
+        android:icon="@android:drawable/ic_menu_edit"
         android:title="@string/editar"
         android:visible="false"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/eliminar"
+        android:icon="@android:drawable/ic_delete"
         android:title="@string/eliminar"
         android:visible="false"
         app:showAsAction="ifRoom"/>

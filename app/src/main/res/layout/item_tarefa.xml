@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Dobrar a Roupa"
+        android:text="@string/dobrar_a_roupa"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textColor="#9C27B0"
         app:layout_constraintEnd_toEndOf="parent"
