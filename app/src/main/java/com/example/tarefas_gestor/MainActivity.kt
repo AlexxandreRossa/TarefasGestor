@@ -9,7 +9,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
-import androidx.navigation.fragment.findNavController
 import com.example.tarefas_gestor.databinding.ActivityMainBinding
 import androidx.fragment.app.Fragment
 
@@ -64,6 +63,8 @@ class MainActivity : AppCompatActivity() {
             is ListaTarefasFragment -> (fragment as ListaTarefasFragment).processaOpcaoMenu(item)
             is EditarTarefaFragment -> (fragment as EditarTarefaFragment).processaOpcaoMenu(item)
             is EliminarTarefaFragment -> (fragment as EliminarTarefaFragment).processaOpcaoMenu(item)
+            is ListaCategoriaFragment -> (fragment as ListaCategoriaFragment).processaOptionMenu(item)
+            is EditarCategoriaFragment -> (fragment as EditarCategoriaFragment).processaOpcaoMenu(item)
             else -> false
         }
 
@@ -80,6 +81,6 @@ override fun onSupportNavigateUp(): Boolean {
 fun mostraOpcaoMenu(idOpcao: Int, mostrar: Boolean) {
     menu.findItem(idOpcao).setVisible(mostrar)
 }
-fun atualizaNome(label: Int) = binding.toolbar.setTitle(label)
+fun atualizaNome(label: String) = binding.toolbar.setTitle(label)
 
 }

@@ -26,6 +26,7 @@
     <string name="data_vencimento">data_vencimento</string>
     <string name="guardar">Guardar</string>
     <string name="cancelar">Cancelar</string>
+    <string name="fragment_lista_categoria">Lista Categoria</string>
     <string name="nome_obrigatorio">Deve preencher o nome</string>
     <string name="data_invalida">Data inválida</string>
     <string name="tarefa_guardada_com_sucesso">Tarefa guardada com sucesso</string>
@@ -44,4 +45,9 @@
     <string name="nova_tarefa_label">Nova Tarefa</string>
     <string name="dobrar_a_roupa">Dobrar a Roupa</string>
     <string name="domestica">Doméstica</string>
+    <string name="NovaCategoria">Categoria</string>
+    <string name="NovaCor">Cor\n</string>
+    <string name="nome_da_categoria">Nome da Categoria</string>
+    <string name="cor_da_categoria">Cor da Categoria</string>
+    <string name="amarelo">Amarelo\n</string>
 </resources>

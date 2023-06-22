@@ -71,4 +71,44 @@
             android:name="tarefa"
             app:argType="com.example.tarefas_gestor.Tarefa" />
     </fragment>
+    <fragment
+        android:id="@+id/listaCategoriaFragment"
+        android:name="com.example.tarefas_gestor.ListaCategoriaFragment"
+        android:label="@string/fragment_lista_categoria"
+        tools:layout="@layout/fragment_lista_categoria">
+        <action
+            android:id="@+id/action_listaCategoriaFragment_to_MenuPrincipalFragment"
+            app:destination="@id/MenuPrincipalFragment" />
+        <action
+            android:id="@+id/action_listaCategoriaFragment_to_editarCategoriaFragment"
+            app:destination="@id/editarCategoriaFragment" />
+        <action
+            android:id="@+id/action_listaCategoriasFragment_to_fragmentEliminarCategoria"
+            app:destination="@id/fragmentEliminarCategoria" />
+    </fragment>
+    <fragment
+        android:id="@+id/editarCategoriaFragment"
+        android:name="com.example.tarefas_gestor.EditarCategoriaFragment"
+        android:label="fragment_editar_marca"
+        tools:layout="@layout/fragment_editar_categoria" >
+        <action
+            android:id="@+id/action_EditarCategoriaFragment_to_ListaCategoriasFragment"
+            app:destination="@id/listaCategoriaFragment" />
+        <argument
+            android:name="categoria"
+            app:argType="com.example.tarefas_gestor.Categoria"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentEliminarCategoria"
+        android:name="com.example.tarefas_gestor.EliminarCategoriaFragment"
+        android:label="fragment_eliminar_marca"
+        tools:layout="@layout/fragment_eliminar_categoria" >
+        <action
+            android:id="@+id/action_fragmentEliminarCategoria_to_listaCategoriasFragment"
+            app:destination="@id/listaCategoriaFragment" />
+        <argument
+            android:name="marcas"
+            app:argType="com.example.tarefas_gestor.TipoDeCategorias" />
+    </fragment>
 </navigation>
